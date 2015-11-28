@@ -1,0 +1,7 @@
+MemoDsl.make {
+to "Mary"
+from "Atia"
+body "HOW U DOINNN"
+question "WHERE U AT??"
+html
+}
