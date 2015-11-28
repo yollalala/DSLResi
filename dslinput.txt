@@ -1,0 +1,6 @@
+ResiDsl.make{
+kepada "Mary"
+dari "Atia"
+question "WHERE U AT??"
+html
+}
