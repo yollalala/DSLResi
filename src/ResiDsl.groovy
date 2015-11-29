@@ -19,6 +19,7 @@ class ResiDsl {
         String telpPenerima
         String kodeWilayahPengirim
 	String dariText
+        String alamatPengirim
         String telpPengirim
         String [] deskripsi
         String [] rincianBerat
@@ -63,6 +64,10 @@ class ResiDsl {
 		this.dariText = dariText
 	}
         
+        def alamatPengirim (String alamatPengirim) {
+            this.alamatPengirim = alamatPengirim
+        }
+    
         def telpPengirim (String telpPengirim) {
             this.telpPengirim = telpPengirim
         }
@@ -142,7 +147,7 @@ class ResiDsl {
                                         b ("No. Resi")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("02 010 547 2731", class:"form-control-static")
+                                        p (resiDsl.noResi, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -150,7 +155,7 @@ class ResiDsl {
                                         b ("Kode wilayah")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("MDC74.00", class:"form-control-static")
+                                        p (resiDsl.kodeWilayahPenerima, class:"form-control-static")
                                      }
                                 }
                                 div (class:"form-group") {
@@ -158,15 +163,15 @@ class ResiDsl {
                                         b ("Kepada")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("Ani", class:"form-control-static")
+                                        p (resiDsl.kepadaText, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
                                     label (class:"col-md-3") {
-                                        b ("Alamat Pengirim")
+                                        b ("Alamat Penerima")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("Jalan cisitu lama no.123 / 154C", class:"form-control-static")
+                                        p (resiDsl.alamatPenerima, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -174,7 +179,7 @@ class ResiDsl {
                                         b ("Telp / Fax")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("085374566905", class:"form-control-static")
+                                        p (resiDsl.telpPenerima, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -182,7 +187,7 @@ class ResiDsl {
                                         b ("Kode wilayah")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("BDO01.00", class:"form-control-static")
+                                        p (resiDsl.kodeWilayahPengirim, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -190,7 +195,7 @@ class ResiDsl {
                                         b ("Dari")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("Budi", class:"form-control-static")
+                                        p (resiDsl.dariText, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -198,7 +203,7 @@ class ResiDsl {
                                         b ("Alamat Pengirim")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("Jalan Sudirman no.20", class:"form-control-static")
+                                        p (resiDsl.alamatPengirim, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -206,7 +211,7 @@ class ResiDsl {
                                         b ("Telp / Fax")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("0853030405", class:"form-control-static")
+                                        p (resiDsl.telpPengirim, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -230,12 +235,13 @@ class ResiDsl {
                                         b ("Services")
                                     }
                                     div (class:"col-md-9") {
-                                        div (class:"checkbox") {
-                                          label { input ("SS", type:"checkbox", value:"")}
-                                        }
-                                        div (class:"checkbox checked") {
-                                          label { input ("ONS", type:"checkbox", value:"")}
-                                        }
+                                        p ("ONS", class:"form-control-static")
+//                                        div (class:"checkbox") {
+//                                          label { input ("SS", type:"checkbox", value:"")}
+//                                        }
+//                                        div (class:"checkbox checked") {
+//                                          label { input ("ONS", type:"checkbox", value:"")}
+//                                        }
 //                                        div (class:"checkbox") {
 //                                          label { input ("TDS", type:"checkbox", value:"")}
 //                                        }
@@ -250,6 +256,31 @@ class ResiDsl {
 //                                        }  
                                     }
                                 }
+                                div (class:"form-group") {
+                                    label (class:"col-md-3") {
+                                        b ("Biaya kirim")
+                                    }
+                                    div (class:"col-md-9") {
+                                        p ("100000", class:"form-control-static")
+                                    }
+                                }
+                                div (class:"form-group") {
+                                    label (class:"col-md-3") {
+                                        b ("Biaya tambahan")
+                                    }
+                                    div (class:"col-md-9") {
+                                        p ("10000", class:"form-control-static")
+                                    }
+                                }
+                                div (class:"form-group") {
+                                    label (class:"col-md-3") {
+                                        b ("TOTAL")
+                                    }
+                                    div (class:"col-md-9") {
+                                        p ("110000", class:"form-control-static")
+                                    }
+                                }
+
                                 div (class:"form-group") {
                                     div ("", class:"col-md-9")
                                     div ("Bandung, 1 Desember 2015", class:"col-md-3")
