@@ -115,18 +115,23 @@ class ResiDsl {
 //		println writer
 //	}
 
-    private static doHtml(ResiDsl resiDsl) {
+    private static String doHtml(ResiDsl resiDsl) {
         def writer = new StringWriter()
         def xml = new MarkupBuilder(writer)
-        xml.html() {
+        xml.html(lang:"en") {
             head {
-                title("Memo")
+                title ("Resi Pengiriman")
+                meta ('charset':"utf-8")
+                meta ('name':'viewport', 'content':'width=device-width, initial-scale=1')
+                link (rel:"stylesheet", href:"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+                script ('', src:'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+                script ('', src:'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
             }
             body {
                 h1("Memo")
                 h3("Kepada: ${resiDsl.kepadaText}")
                 h3("Dari: ${resiDsl.dariText}")
-//                h3("No Resi: ${resiDsl.noResi}")
+                h3("No Resi: ${resiDsl.noResi}")
 //                p(resiDsl.body)
 //                 // cycle through the stored section objects and create uppercase/bold section with body
 //                for (s in resiDsl.sections) {
@@ -137,7 +142,7 @@ class ResiDsl {
 //                }
             }
         }
-        println writer
+        return writer
     }
 
 //    private static doText(ResiDsl resiDsl) {

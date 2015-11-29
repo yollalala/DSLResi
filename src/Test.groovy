@@ -10,8 +10,8 @@
  */
 class Test {
     public String bacaFile() {
-            String string = new File('C:\\Users\\User\\Desktop\\rplsd\\dslinput.txt').text
-            string = new GroovyShell().evaluate(string)
+            String string = new File('D:\\dslinput.txt').text
+            string = new GroovyShell().evaluate("ResiDsl.make{" + string + "}")
             
             return string; 
     }
