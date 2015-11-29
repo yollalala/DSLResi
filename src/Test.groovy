@@ -37,7 +37,11 @@ class Test {
             if( line.trim() ) {
               def (key,value) = line.split( ' ' ).collect { it.trim() }
               if (parameters.contains(key)) {
-                  // nothing
+                  if (key == "service") {
+                      if (checkService(value)!=1) {
+                          val = 0
+                      }
+                  }
               } else {
                   val = 0;
               }
@@ -53,6 +57,16 @@ class Test {
           if( driveInfo ) {
             dataList << driveInfo
           }
+        }
+    }
+    
+    public int checkService(String value) {
+        def values = "SS ONS TDS REG packing insurance".split()
+        String con = value.replace("\"","")
+        if (values.contains(con)) {
+            return 1
+        } else {
+            return 0
         }
     }
 }
