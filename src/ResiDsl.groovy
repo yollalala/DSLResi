@@ -93,8 +93,12 @@ class ResiDsl {
 //		doXml(this)
 //	}
 
-	def getHtml() {
-		doHtml(this)
+	def getTiki() {
+		doTiki(this)
+	}
+        
+        def getJne() {
+		doJne(this)
 	}
 
 //	def getText() {
@@ -115,7 +119,7 @@ class ResiDsl {
 //		println writer
 //	}
 
-    private static String doHtml(ResiDsl resiDsl) {
+    private static String doTiki(ResiDsl resiDsl) {
         def writer = new StringWriter()
         def xml = new MarkupBuilder(writer)
         xml.html(lang:"en") {
@@ -278,6 +282,36 @@ class ResiDsl {
         }
         return writer
     }
+    
+    private static String doJne(ResiDsl resiDsl) {
+        def writer = new StringWriter()
+        def xml = new MarkupBuilder(writer)
+        xml.html(lang:"en") {
+            head {
+                title ("Resi Pengiriman Jne")
+                meta ('charset':"utf-8")
+                meta ('name':'viewport', 'content':'width=device-width, initial-scale=1')
+                link (rel:"stylesheet", href:"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+                script ('', src:'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+                script ('', src:'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
+            }
+            body {
+                h1("Resi Pengiriman JNE")
+                h3("Kepada: ${resiDsl.kepadaText}")
+                h3("Dari: ${resiDsl.dariText}")
+                h3("No Resi: ${resiDsl.noResi}")
+//                p(resiDsl.body)
+//                 // cycle through the stored section objects and create uppercase/bold section with body
+//                for (s in resiDsl.sections) {
+//                    p {
+//                        b(s.title.toUpperCase())
+//                    }
+//                    p(s.body)
+//                }
+            }
+        }
+        return writer
+    }
 
 //    private static doText(ResiDsl resiDsl) {
 //        String template = "Memo\nKepada: ${resiDsl.kepadaText}\nDari: ${resiDsl.dariText}\n${resiDsl.body}\n"
@@ -289,4 +323,3 @@ class ResiDsl {
 //        println template
 //    }
 }
-

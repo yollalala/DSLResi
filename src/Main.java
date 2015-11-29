@@ -16,15 +16,20 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         Test test = new Test();
-        String output = "<!DOCTYPE html>\n" + test.bacaFile();
-        
-        // write file output.html
-        tulisFile(output);
+        String retval = test.bacaFile();
+        if (retval.equals("not-ok")) {
+            System.out.println("not a valid category");
+        } else {
+            String output = "<!DOCTYPE html>\n" + test.bacaFile();
+
+            // write file output.html
+            tulisFile(output);
+        }
     }
     
     public static void tulisFile(String content) throws IOException {
         //write file
-        File file = new File("D:\\output.html");
+        File file = new File("C:\\Users\\User\\Desktop\\output.html");
 
         // if file doesnt exists, then create it
         if (!file.exists()) {
