@@ -12,8 +12,8 @@ class Test {
     public String bacaFile() {
             String string;
 //            println validateInput('C:\\Users\\User\\Desktop\\dslinput.txt')
-            if (validateInput('C:\\Users\\User\\Desktop\\dslinput.txt')==1){
-                string = new File('C:\\Users\\User\\Desktop\\dslinput.txt').text
+            if (validateInput('D:\\dslinput.txt')==1){
+                string = new File('D:\\dslinput.txt').text
                 string = new GroovyShell().evaluate("ResiDsl.make{" + string + "}")
             } else {
                 string = "not-ok";

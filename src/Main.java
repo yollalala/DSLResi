@@ -29,7 +29,7 @@ public class Main {
     
     public static void tulisFile(String content) throws IOException {
         //write file
-        File file = new File("C:\\Users\\User\\Desktop\\output.html");
+        File file = new File("D:\\output.html");
 
         // if file doesnt exists, then create it
         if (!file.exists()) {
