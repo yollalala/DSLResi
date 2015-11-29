@@ -25,7 +25,7 @@ class Test {
     public int validateInput(String filename) {
         int val = 1
         def dataList = []
-        def parameters = "noResi kodeWilayahPenerima kepadaText alamatPenerima telpPenerima kodeWilayahPengirim dariText telpPengirim deskripsi rincianBerat service".split()
+        def parameters = "noResi jne tiki kodeWilayahPenerima kepadaText alamatPenerima telpPenerima kodeWilayahPengirim dariText telpPengirim deskripsi rincianBerat service".split()
 
         File file = new File( filename )
 
