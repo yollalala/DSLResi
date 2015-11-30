@@ -1,6 +1,14 @@
-ResiDsl.make{
-kepada "Mary"
-dari "Atia"
-question "WHERE U AT??"
-html
-}
+kepada "brian"
+alamatpengirim "jakarta"
+dari "atia"
+jumlahtitipan "1"
+rincianberat "22"
+kwpengirim "77"
+biayakirim "2"
+biayatambahan "23"
+kwpenerima "99"
+service "SS"
+alamatpenerima "depok"
+telppenerima "0217709481"
+tipebarang "parcel"
+jne
