@@ -1,6 +1,6 @@
 
 import groovy.xml.MarkupBuilder
-
+import java.util.Random
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -21,9 +21,14 @@ class ResiDsl {
 	String dariText
         String alamatPengirim
         String telpPengirim
-        String [] deskripsi
-        String [] rincianBerat
+        String jumlahTitipan
+        String deskripsi
+        String rincianBerat
         String service
+        String biayaKirim
+        String biayaTambahan
+        
+        String tipeBarang
 //	String body
 	def sections = []
 
@@ -37,7 +42,14 @@ class ResiDsl {
             // generate no resi
 		this.noResi = noResi
 	}
-    
+        
+        def String generateNoResi() {
+//            return "121212121"
+              String temp = "0" + Math.abs(new Random().nextInt() % 9999999 + 20100000000).toString()
+              return temp
+//              return temp[0-2] + " " + temp[2-5] + " " + temp[5-8] + " " + temp[8-12]
+        }
+        
         def kodeWilayahPenerima (String kodeWilayahPenerima) {
             // ambil dari database
             this.kodeWilayahPenerima = kodeWilayahPenerima
@@ -147,7 +159,7 @@ class ResiDsl {
                                         b ("No. Resi")
                                     }
                                     div (class:"col-md-9") {
-                                        p (resiDsl.noResi, class:"form-control-static")
+                                        p (resiDsl.generateNoResi(), class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -222,14 +234,14 @@ class ResiDsl {
                                         p ("Spare part computer", class:"form-control-static")
                                     }
                                 }
-                                div (class:"form-group") {
-                                    label (class:"col-md-3") {
-                                        b ("Perincian berat volume")
-                                    }
-                                    div (class:"col-md-9") {
-                                        p ("-", class:"form-control-static")
-                                    }
-                                }
+//                                div (class:"form-group") {
+//                                    label (class:"col-md-3") {
+//                                        b ("Perincian berat volume")
+//                                    }
+//                                    div (class:"col-md-9") {
+//                                        p ("-", class:"form-control-static")
+//                                    }
+//                                }
                                 div (class:"form-group") {
                                     label (class:"col-md-3") {
                                         b ("Services")
@@ -277,7 +289,7 @@ class ResiDsl {
                                         b ("TOTAL")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("110000", class:"form-control-static")
+                                        p (("100000".toInteger() + "10000".toInteger()).toString(), class:"form-control-static")
                                     }
                                 }
 
