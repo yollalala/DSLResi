@@ -14,11 +14,11 @@ class InputHandler {
     
     public String bacaFile() {
         // String string
-            String string = 'C:\\Users\\User\\Desktop\\dslinput.txt'
+            String string = 'D:\\dslinput.txt'
             int val = validateInput(string)
             if (val==1){
                 
-                string = new File('C:\\Users\\User\\Desktop\\dslinput.txt').text
+                string = new File('D:\\dslinput.txt').text
                 string = new GroovyShell().evaluate("ResiDsl.make{" + string + "}")
             }
             else {
@@ -31,10 +31,10 @@ class InputHandler {
     public int validateInput(String filename) {
         int val = 1
 //        def dataList = []
-        def parameters = "biayakirim biayatambahan jumlahtitipan jne tiki kwpenerima kepada alamatpenerima alamatpengirim telppenerima kwpengirim dari telppengirim deskripsi rincianberat service tipebarang".split()
+        def parameters = "biayakirim biayatambahan jumlahtitipan jne tiki kwpenerima kepada alamatpenerima alamatpengirim telppenerima kwpengirim dari telppengirim deskripsi berat service tipebarang".split()
 
         File file = new File( filename )
-        String stringfile = new File('C:\\Users\\User\\Desktop\\dslinput.txt').text
+        String stringfile = new File('D:\\dslinput.txt').text
 
         if( !file.exists() ) {
           println "File does not exist"

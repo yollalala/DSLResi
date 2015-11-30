@@ -10,7 +10,7 @@
  */
 class JneHandler {
         static def categories = []
-        static List mandatory = ["kepada", "alamatpengirim", "alamatpenerima", "dari", "jumlahtitipan", "rincianberat", "biayakirim", "biayatambahan", "tipebarang", "service"]
+        static List mandatory = ["kepada", "alamatpengirim", "alamatpenerima", "dari", "jumlahtitipan", "berat", "biayakirim", "biayatambahan", "tipebarang", "service"]
 	public static int checkService(String value) {
             def values = "intracity diplomat SS REG YES OKE international others".split()
             String con = value.replace("\"","")

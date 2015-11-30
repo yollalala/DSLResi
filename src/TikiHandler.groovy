@@ -10,7 +10,7 @@
  */
 class TikiHandler {
         static def categories = []
-        static List mandatory = ["kepada", "alamatpengirim", "alamatpenerima", "dari", "jumlahtitipan", "rincianberat", "biayakirim", "biayatambahan", "kwpenerima", "kwpengirim", "service"]
+        static List mandatory = ["kepada", "alamatpengirim", "alamatpenerima", "dari", "jumlahtitipan", "berat", "biayakirim", "biayatambahan", "kwpenerima", "kwpengirim", "service"]
 	public static int checkService(String value) {
             def values = "SS ONS TDS REG packing insurance".split()
             String con = value.replace("\"","")

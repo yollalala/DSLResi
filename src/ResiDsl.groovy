@@ -23,12 +23,13 @@ class ResiDsl {
         String telpPengirim
         String jumlahTitipan
         String deskripsi
-        String rincianBerat
+        String berat
         String service
         String biayaKirim
         String biayaTambahan
         
         String tipeBarang
+        String dimensi
 //	String body
 	def sections = []
 
@@ -50,7 +51,7 @@ class ResiDsl {
 //              return temp[0-2] + " " + temp[2-5] + " " + temp[5-8] + " " + temp[8-12]
         }
         
-        def kodeWilayahPenerima (String kodeWilayahPenerima) {
+        def kwpenerima (String kodeWilayahPenerima) {
             // ambil dari database
             this.kodeWilayahPenerima = kodeWilayahPenerima
         }
@@ -59,15 +60,15 @@ class ResiDsl {
 		this.kepadaText = kepadaText
 	}
         
-        def alamatPenerima (String alamatPenerima) {
+        def alamatpenerima (String alamatPenerima) {
             this.alamatPenerima = alamatPenerima
         }
         
-        def telpPenerima (String telpPenerima) {
+        def telppenerima (String telpPenerima) {
             this.telpPenerima = telpPenerima
         }
         
-        def kodeWilayahPengirim (String kodeWilayahPengirim) {
+        def kwpengirim (String kodeWilayahPengirim) {
             // ambil dari database
             this.kodeWilayahPengirim = kodeWilayahPengirim
         }
@@ -76,31 +77,61 @@ class ResiDsl {
 		this.dariText = dariText
 	}
         
-        def alamatPengirim (String alamatPengirim) {
+        def alamatpengirim (String alamatPengirim) {
             this.alamatPengirim = alamatPengirim
         }
     
-        def telpPengirim (String telpPengirim) {
+        def telppengirim (String telpPengirim) {
             this.telpPengirim = telpPengirim
         }
         
-        def deskripsi (String [] deskripsi) {
+        def jumlahtitipan (String jumlahTitipan) {
+            this.jumlahTitipan = jumlahTitipan
+        }
+    
+        def deskripsi (String deskripsi) {
             // nama-nama barang kiriman
             this.deskripsi = deskripsi
         }
         
-        def rincianBerat (String [] rincianBerat) {
-            this.rincianBerat = rincianBerat
+        def berat (String berat) {
+            this.berat = berat
         }
         
-        def service (int service) {
+        def service (String service) {
             this.service = service
         }
-
-//	def body (String body) {
-//		this.body = body
-//	}
-
+        
+        def biayakirim (String biayaKirim) {
+            this.biayaKirim = biayaKirim
+        }
+        
+        def biayatambahan (String biayaTambahan) {
+            this.biayaTambahan = biayaTambahan
+        }
+        
+        def tipebarang (String tipeBarang) {
+            this.tipeBarang = tipeBarang
+        }
+    
+        def dimensi (String dimensi) {
+            this.dimensi = dimensi
+        }
+    
+	def body (String body) {
+		this.body = body
+	}
+        
+        def String setDefaultOrValue(String value) { // return default "-", if value == null
+            if (value == null) {
+                return "-"
+            }
+            else {
+                return value
+            }
+        }
+    
+        // TODO biaya kirim, tambahan
 	def methodMissing(String methodname, args) {
 		def section = new Section(title: methodname, body: args[0])
 		sections << section
@@ -191,7 +222,7 @@ class ResiDsl {
                                         b ("Telp / Fax")
                                     }
                                     div (class:"col-md-9") {
-                                        p (resiDsl.telpPenerima, class:"form-control-static")
+                                        p (resiDsl.setDefaultOrValue(resiDsl.telpPenerima), class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -223,7 +254,7 @@ class ResiDsl {
                                         b ("Telp / Fax")
                                     }
                                     div (class:"col-md-9") {
-                                        p (resiDsl.telpPengirim, class:"form-control-static")
+                                        p (resiDsl.setDefaultOrValue(resiDsl.telpPengirim), class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -231,7 +262,7 @@ class ResiDsl {
                                         b ("Jumlah titipan")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("1", class:"form-control-static")
+                                        p (resiDsl.jumlahTitipan, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -239,7 +270,7 @@ class ResiDsl {
                                         b ("Berat")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("1", class:"form-control-static")
+                                        p (resiDsl.berat, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -247,7 +278,7 @@ class ResiDsl {
                                         b ("Isi menurut pengakuan")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("Spare part computer", class:"form-control-static")
+                                        p (resiDsl.setDefaultOrValue(resiDsl.deskripsi), class:"form-control-static")
                                     }
                                 }
 //                                div (class:"form-group") {
@@ -263,7 +294,7 @@ class ResiDsl {
                                         b ("Services")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("ONS", class:"form-control-static")
+                                        p (resiDsl.service, class:"form-control-static")
 //                                        div (class:"checkbox") {
 //                                          label { input ("SS", type:"checkbox", value:"")}
 //                                        }
@@ -289,7 +320,7 @@ class ResiDsl {
                                         b ("Biaya kirim")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("100000", class:"form-control-static")
+                                        p (resiDsl.biayaKirim, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -297,15 +328,15 @@ class ResiDsl {
                                         b ("Biaya tambahan")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("10000", class:"form-control-static")
+                                        p (resiDsl.biayaTambahan, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
                                     label (class:"col-md-3") {
-                                        b ("TOTAL")
+                                    b ("TOTAL")
                                     }
                                     div (class:"col-md-9") {
-                                        p (("100000".toInteger() + "10000".toInteger()).toString(), class:"form-control-static")
+                                        p ((resiDsl.biayaKirim.toInteger() + resiDsl.biayaTambahan.toInteger()).toString(), class:"form-control-static")
                                     }
                                 }
 
@@ -389,7 +420,7 @@ class ResiDsl {
                                         b ("Tel. No")
                                     }
                                     div (class:"col-md-9") {
-                                        p (resiDsl.telpPenerima, class:"form-control-static")
+                                        p (resiDsl.setDefaultOrValue(resiDsl.telpPenerima), class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -413,7 +444,7 @@ class ResiDsl {
                                         b ("Tel. No")
                                     }
                                     div (class:"col-md-9") {
-                                        p (resiDsl.telpPengirim, class:"form-control-static")
+                                        p (resiDsl.setDefaultOrValue(resiDsl.telpPengirim), class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -421,7 +452,7 @@ class ResiDsl {
                                         b ("Deskripsi of Shipments")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("Spare part computer", class:"form-control-static")
+                                        p (resiDsl.setDefaultOrValue(resiDsl.deskripsi), class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -429,7 +460,7 @@ class ResiDsl {
                                         b { u ("Dimensions") }
                                     }
                                     div (class:"col-md-9") {
-                                        p ("", class:"form-control-static")
+                                        p (resiDsl.setDefaultOrValue(resiDsl.dimensi), class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -437,7 +468,7 @@ class ResiDsl {
                                         b ("Pieces")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("1", class:"form-control-static")
+                                        p (resiDsl.jumlahTitipan, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -445,7 +476,7 @@ class ResiDsl {
                                         b ("Weight")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("1", class:"form-control-static")
+                                        p (resiDsl.berat, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -453,7 +484,7 @@ class ResiDsl {
                                         b ("Services")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("Regular service", class:"form-control-static")
+                                        p (resiDsl.service, class:"form-control-static")
 //                                        div (class:"checkbox") {
 //                                          label { input ("SS", type:"checkbox", value:"")}
 //                                        }
@@ -479,7 +510,7 @@ class ResiDsl {
                                         b ("Type of Goods")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("Parcel", class:"form-control-static")
+                                        p (resiDsl.tipeBarang, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -487,7 +518,7 @@ class ResiDsl {
                                         b ("Tarif")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("100000", class:"form-control-static")
+                                        p (resiDsl.biayaKirim, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -495,7 +526,7 @@ class ResiDsl {
                                         b ("Other Fee")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("10000", class:"form-control-static")
+                                        p (resiDsl.biayaTambahan, class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
@@ -503,7 +534,7 @@ class ResiDsl {
                                         b ("Amount")
                                     }
                                     div (class:"col-md-9") {
-                                        p (("100000".toInteger() + "10000".toInteger()).toString(), class:"form-control-static")
+                                        p ((resiDsl.biayaKirim.toInteger() + resiDsl.biayaTambahan.toInteger()).toString(), class:"form-control-static")
                                     }
                                 }
 
