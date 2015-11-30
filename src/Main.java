@@ -15,26 +15,21 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        Test test = new Test();
-        String retval = test.bacaFile();
-        switch (retval) {
-            case "err6":
-                System.out.println("unrecognized category");
-                break;
-            case "err5":
-                System.out.println("unrecognized service value");
-                break;
-            default:
-                String output = "<!DOCTYPE html>\n" + test.bacaFile();
-                // write file output.html
-                tulisFile(output);
-                break;
+        InputHandler inputhandler = new InputHandler();
+        String retval = inputhandler.bacaFile();
+        if (retval.equals("err")) {
+            System.out.println("Silakan cek inputan Anda lagi");
+        } else {
+            String output = "<!DOCTYPE html>\n" + retval;
+            // write file output.html
+            tulisFile(output);
+            System.out.println("output berhasil!");
         }
     }
     
     public static void tulisFile(String content) throws IOException {
         //write file
-        File file = new File("D:\\output.html");
+        File file = new File("C:\\Users\\User\\Desktop\\output.html");
 
         // if file doesnt exists, then create it
         if (!file.exists()) {
