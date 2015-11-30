@@ -45,7 +45,9 @@ class ResiDsl {
         
         def String generateNoResi() {
 //            return "121212121"
-              return "0" + Math.abs(new Random().nextInt() % 9999999 + 20100000000).toString()
+              String temp = "0" + Math.abs(new Random().nextInt() % 9999999 + 20100000000).toString()
+              return temp
+//              return temp[0-2] + " " + temp[2-5] + " " + temp[5-8] + " " + temp[8-12]
         }
         
         def kodeWilayahPenerima (String kodeWilayahPenerima) {
@@ -287,7 +289,7 @@ class ResiDsl {
                                         b ("TOTAL")
                                     }
                                     div (class:"col-md-9") {
-                                        p ("110000", class:"form-control-static")
+                                        p (("100000".toInteger() + "10000".toInteger()).toString(), class:"form-control-static")
                                     }
                                 }
 
