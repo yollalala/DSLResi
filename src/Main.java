@@ -17,13 +17,18 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Test test = new Test();
         String retval = test.bacaFile();
-        if (retval.equals("not-ok")) {
-            System.out.println("not a valid category");
-        } else {
-            String output = "<!DOCTYPE html>\n" + test.bacaFile();
-
-            // write file output.html
-            tulisFile(output);
+        switch (retval) {
+            case "err6":
+                System.out.println("unrecognized category");
+                break;
+            case "err5":
+                System.out.println("unrecognized service value");
+                break;
+            default:
+                String output = "<!DOCTYPE html>\n" + test.bacaFile();
+                // write file output.html
+                tulisFile(output);
+                break;
         }
     }
     

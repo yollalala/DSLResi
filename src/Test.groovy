@@ -8,15 +8,20 @@
  *
  * @author atia
  */
+
 class Test {
     public String bacaFile() {
             String string;
-//            println validateInput('C:\\Users\\User\\Desktop\\dslinput.txt')
             if (validateInput('D:\\dslinput.txt')==1){
                 string = new File('D:\\dslinput.txt').text
                 string = new GroovyShell().evaluate("ResiDsl.make{" + string + "}")
-            } else {
-                string = "not-ok";
+            } else if (validateInput('D:\\dslinput.txt')==5) {
+                // error 5 : wrong service value
+                string = "err5"
+            }
+            else {
+                // error 6 : unrecognized category
+                string = "err6";
             }
             
             return string; 
@@ -39,7 +44,7 @@ class Test {
               if (parameters.contains(key)) {
                   if (key == "service") {
                       if (checkService(value)!=1) {
-                          val = 0
+                          val = checkService(value)
                       }
                   }
               } else {
@@ -66,7 +71,7 @@ class Test {
         if (values.contains(con)) {
             return 1
         } else {
-            return 0
+            return 5
         }
     }
 }
