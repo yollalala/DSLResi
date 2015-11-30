@@ -1,6 +1,6 @@
 
 import groovy.xml.MarkupBuilder
-
+import java.util.Random
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -37,7 +37,12 @@ class ResiDsl {
             // generate no resi
 		this.noResi = noResi
 	}
-    
+        
+        def String generateNoResi() {
+//            return "121212121"
+              return "0" + Math.abs(new Random().nextInt() % 9999999 + 20100000000).toString()
+        }
+        
         def kodeWilayahPenerima (String kodeWilayahPenerima) {
             // ambil dari database
             this.kodeWilayahPenerima = kodeWilayahPenerima
@@ -147,7 +152,7 @@ class ResiDsl {
                                         b ("No. Resi")
                                     }
                                     div (class:"col-md-9") {
-                                        p (resiDsl.noResi, class:"form-control-static")
+                                        p (resiDsl.generateNoResi(), class:"form-control-static")
                                     }
                                 }
                                 div (class:"form-group") {
