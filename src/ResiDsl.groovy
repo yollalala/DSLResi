@@ -143,7 +143,7 @@ class ResiDsl {
             }
             body {
                 div (class:"container") {
-                    h2 ("Resi Pengiriman")
+                    h2 ("Resi Pengiriman Tiki")
                     div (class:"panel panel-default") {
                         div (class:"panel-body") {
                             form (role:"form") {
