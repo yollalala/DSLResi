@@ -21,9 +21,14 @@ class ResiDsl {
 	String dariText
         String alamatPengirim
         String telpPengirim
-        String [] deskripsi
-        String [] rincianBerat
+        String jumlahTitipan
+        String deskripsi
+        String rincianBerat
         String service
+        String biayaKirim
+        String biayaTambahan
+        
+        String tipeBarang
 //	String body
 	def sections = []
 
@@ -227,14 +232,14 @@ class ResiDsl {
                                         p ("Spare part computer", class:"form-control-static")
                                     }
                                 }
-                                div (class:"form-group") {
-                                    label (class:"col-md-3") {
-                                        b ("Perincian berat volume")
-                                    }
-                                    div (class:"col-md-9") {
-                                        p ("-", class:"form-control-static")
-                                    }
-                                }
+//                                div (class:"form-group") {
+//                                    label (class:"col-md-3") {
+//                                        b ("Perincian berat volume")
+//                                    }
+//                                    div (class:"col-md-9") {
+//                                        p ("-", class:"form-control-static")
+//                                    }
+//                                }
                                 div (class:"form-group") {
                                     label (class:"col-md-3") {
                                         b ("Services")
