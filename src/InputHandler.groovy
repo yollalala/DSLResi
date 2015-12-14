@@ -42,7 +42,9 @@ class InputHandler {
           def driveInfo = [:]
           
         // loop
-        if (stringfile.contains('tiki')) {
+        if(stringfile.contains('tiki') && stringfile.contains('jne')) {
+            val = 0;
+        } else if (stringfile.contains('tiki')) {
             file.eachLine { line ->
                 def (key,value) = line.split( ' ' ).collect { it.trim() }
                 if (parameters.contains(key)) {
